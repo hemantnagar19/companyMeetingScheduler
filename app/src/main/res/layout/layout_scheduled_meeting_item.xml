@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+            android:id="@+id/tv_booked_slot_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11:00 AM"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView android:id="@+id/slot_dash"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text=" - "
+              android:layout_marginTop="10dp"
+              app:layout_constraintStart_toEndOf="@+id/tv_booked_slot_start_time"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/tv_booked_slot_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00 AM"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/slot_dash"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <View android:id="@+id/slot_line"
+            android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginHorizontal="20dp"
+          app:layout_constraintStart_toStartOf="parent"
+          android:background="@color/line_background"
+          app:layout_constraintTop_toBottomOf="@+id/tv_booked_slot_start_time"/>
+
+    <TextView
+            android:id="@+id/slot_description"
+            android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:singleLine="true"
+              android:layout_marginVertical="5dp"
+              android:layout_marginHorizontal="20dp"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/slot_line"
+    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "/>
+
+
+    <View android:id="@+id/booked_slot_item_end_line"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="10dp"
+          app:layout_constraintStart_toStartOf="parent"
+          android:background="@color/dark_gray"
+          app:layout_constraintTop_toBottomOf="@+id/slot_description"/>
+
+</android.support.constraint.ConstraintLayout>
