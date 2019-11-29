@@ -1,6 +1,7 @@
 package com.example.companymeetingscheduler
 
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,17 @@ class ShowScheduledMeetingsAdapter constructor(val context: Context, var listOfS
         p0.mTvStartTime.text = convertTimeIntoAMPM(slot.start_time)
         p0.mTvEndTime.text = convertTimeIntoAMPM(slot.end_time)
         p0.mDescription.text = slot.description
+
+        var participantsString = ""
+        for (s in slot.participants) {
+            participantsString +=  s + ","
+        }
+        p0.mParticipants.text = participantsString.removeSuffix(",")
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            p0.mParticipants.visibility = View.GONE
+        } else {
+            p0.mParticipants.visibility = View.VISIBLE
+        }
     }
 
 
@@ -41,6 +53,7 @@ class ShowScheduledMeetingsAdapter constructor(val context: Context, var listOfS
         var mTvStartTime = itemView.tv_booked_slot_start_time
         var mTvEndTime = itemView.tv_booked_slot_end_time
         var mDescription = itemView.slot_description
+        var mParticipants = itemView.tvParticipants
     }
 
     /**

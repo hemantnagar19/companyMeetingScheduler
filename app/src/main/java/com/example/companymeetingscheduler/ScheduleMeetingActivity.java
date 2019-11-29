@@ -24,6 +24,7 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
     private Context context;
 
     private LinearLayout llBack;
+    private ImageButton ibBack;
 
     private TextView etMeetingDate;
 
@@ -63,6 +64,14 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                 finish();
             }
         });
+        ibBack = (ImageButton) findViewById(R.id.ib_back);
+        ibBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         etMeetingDate = (TextView) findViewById(R.id.etMeetingDate);
         etMeetingDate.setText(selectedDate);

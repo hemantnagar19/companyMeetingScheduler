@@ -16,6 +16,14 @@ public class Utils {
         return timestamp;
     }
 
+    public static String getCurrentDateLandscape() {
+        long date = System.currentTimeMillis();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String timestamp = simpleDateFormat.format(date);
+        Log.d("az", "current date :" + timestamp);
+        return timestamp;
+    }
+
     public static String getCurrentDateSlash() {
         long date = System.currentTimeMillis();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");

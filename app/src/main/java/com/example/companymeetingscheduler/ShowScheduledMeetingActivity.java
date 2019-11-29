@@ -1,7 +1,9 @@
 package com.example.companymeetingscheduler;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -104,7 +106,11 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
 
         rcv_scheduled_meetingadapter.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(context));
 
-        tv_date.setText(Utils.getCurrentDate());
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            tv_date.setText(Utils.getCurrentDate());
+        } else {
+            tv_date.setText(Utils.getCurrentDateLandscape());
+        }
 
         tv_date.addTextChangedListener(new TextWatcher() {
             @Override
@@ -147,6 +153,7 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
         fetchScheduledSlotsList(Utils.getCurrentDateSlash());
 
     }
+
 
 
     private void fetchScheduledSlotsList(String dateValue) {
@@ -226,7 +233,7 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
         if (list.size() > 0) {
             Log.d("az", "have booked slots");
         } else {
-            Toast.makeText(context, "No booked slots", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "No booked slots", Toast.LENGTH_SHORT).show();
         }
 
     }

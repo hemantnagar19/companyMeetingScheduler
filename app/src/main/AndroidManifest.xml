@@ -16,8 +16,7 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".ShowScheduledMeetingActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".ShowScheduledMeetingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,7 +25,7 @@
         </activity>
 
         <activity android:name=".ScheduleMeetingActivity"
-            android:screenOrientation="portrait">
+        android:screenOrientation="portrait">
 
         </activity>
     </application>
