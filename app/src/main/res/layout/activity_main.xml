@@ -52,7 +52,7 @@
                             android:text="PREV"
                             android:gravity="center"
                             android:textColor="@color/white"
-                            android:textSize="18dp"/>
+                            android:textSize="16dp"/>
 
                 </LinearLayout>
 
@@ -62,7 +62,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:text="06-08-2019"
-                        android:textStyle="bold"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="18dp"/>
@@ -81,7 +80,7 @@
                             android:text="NEXT"
                             android:gravity="center"
                             android:textColor="@color/white"
-                            android:textSize="18dp"/>
+                            android:textSize="16dp"/>
 
                     <ImageButton
                             android:id="@+id/ib_next"
@@ -125,7 +124,7 @@
 
         <Button
                 android:id="@+id/bt_schedule_meeting"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"

@@ -1,15 +1,15 @@
 package com.example.companymeetingscheduler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,11 +34,14 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
     private ArrayList<ScheduledSlotWrapper> listOfSlots;
 
     private LinearLayout ll_prev, ll_next;
+    private ImageButton ib_prev, ib_next;
     private TextView tv_date;
     private Button bt_schedule_meeting;
     private RecyclerView rcv_scheduled_meetingadapter;
 
     private ShowScheduledMeetingsAdapter adapter;
+
+    private JSONArray finalJsonArray;
 
 
     @Override
@@ -61,8 +64,31 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
         });
 
 
+
         ll_next = (LinearLayout) findViewById(R.id.llNext);
         ll_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dateValue = tv_date.getText().toString();
+                Log.d("az date value next clicked", dateValue);
+                fetchScheduledSlotsList(Utils.getNextDateSlash(Utils.dateConversion(dateValue, true)));
+                tv_date.setText(Utils.getNextDate(dateValue));
+            }
+        });
+
+        ib_prev = (ImageButton) findViewById(R.id.ib_prev);
+        ib_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dateValue = tv_date.getText().toString();
+                Log.d("az date value prev clicked", dateValue);
+                fetchScheduledSlotsList(Utils.getPrevDateSlash(Utils.dateConversion(dateValue, true)));
+                tv_date.setText(Utils.getPrevDate(dateValue));
+            }
+        });
+
+        ib_next = (ImageButton) findViewById(R.id.ib_next);
+        ib_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String dateValue = tv_date.getText().toString();
@@ -109,7 +135,11 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
                 if(Utils.isPastDate(dateValue)) {
                     Toast.makeText(context, "Can't schedule meeting on past date", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(context, "schedule company meeting", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(context, "schedule company meeting", Toast.LENGTH_LONG).show();
+
+                    startActivity(new Intent(context, ScheduleMeetingActivity.class)
+                        .putExtra("SelectedDate", tv_date.getText().toString())
+                        .putExtra("SlotsJsonArray",  finalJsonArray.toString()));
                 }
             }
         });
@@ -151,6 +181,7 @@ public class ShowScheduledMeetingActivity  extends AppCompatActivity {
      */
     private void prepareScheduledSlotsList(JSONArray response) {
 
+        finalJsonArray = response;
 
         listOfSlots.clear();
 

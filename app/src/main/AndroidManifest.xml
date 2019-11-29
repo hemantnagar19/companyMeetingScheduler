@@ -16,12 +16,18 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".ShowScheduledMeetingActivity">
+        <activity android:name=".ShowScheduledMeetingActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ScheduleMeetingActivity"
+            android:screenOrientation="portrait">
+
         </activity>
     </application>
 
